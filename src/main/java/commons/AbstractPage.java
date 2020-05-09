@@ -28,7 +28,7 @@ public class AbstractPage {
     List<WebElement> elements;
     Set<String> allWindows;
     Actions action;
-    long shortTimeout = 5;
+    long shortTimeout = 3;
     long longTimeout = 30;
 
     public AbstractPage(WebDriver driver) {
@@ -197,9 +197,7 @@ public class AbstractPage {
     }
 
     public boolean isElementDisplayed(String locator) {
-        overideGlobalTimeout(shortTimeout);
         element = driver.findElement(By.xpath(locator));
-        overideGlobalTimeout(longTimeout);
         return element.isDisplayed();
     }
 
@@ -377,13 +375,15 @@ public class AbstractPage {
         driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
     }
 
-    public int randomNumber() {
+    public int randomNumber(int boundNumber) {
         Random random = new Random();
-        return random.nextInt();
+        return random.nextInt(boundNumber);
     }
 
     public boolean isElementPresentInDOM(String locator) {
+        overideGlobalTimeout(shortTimeout);
         elements = driver.findElements(By.xpath(locator));
+        overideGlobalTimeout(longTimeout);
         if (elements.size() > 0) {
             return true;
         } else {
