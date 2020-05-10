@@ -27,11 +27,11 @@ public class createStore extends AbstractTest {
         abstractPage = new AbstractPage(driver);
     }
 
-    @Test(invocationCount = 2)
+    @Test(invocationCount = 30)
     public void TC01_CreateShopifyStore() {
         //Init data
         Random random = new Random();
-        randomNumber = random.nextInt(999);
+        randomNumber = random.nextInt(9999);
 
         email = Constants.EMAIL + randomNumber + "@mail.com";
         storeName = Constants.STORE_NAME + " " + randomNumber;
@@ -53,11 +53,11 @@ public class createStore extends AbstractTest {
 
         log.info("Step 03: Press Create your store button");
         isStoreNameExisted = abstractPage.isElementPresentInDOM(ShopifyPageUI.ERR_NAME_EXISTS);
-        if (isStoreNameExisted) {
-            shopifyPage.inputToRegisterTextBoxes("Your store name", storeNameBackup);
-        } else {
+//        if (isStoreNameExisted) {
+//            shopifyPage.inputToRegisterTextBoxes("Your store name", storeNameBackup);
+//        } else {
             shopifyPage.clickToCreateYourStoreButton();
-        }
+//        }
 
         log.info("Step 04: Verify the user can create the store");
         verifyTrue(shopifyPage.isRegisterInfoAcceptable());

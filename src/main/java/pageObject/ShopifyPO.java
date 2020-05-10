@@ -32,13 +32,9 @@ public class ShopifyPO extends AbstractPage {
     }
 
     public void clickToCreateYourStoreButton() {
-        if (isElementPresentInDOM(ShopifyPageUI.ERR_NAME_EXISTS)) {
-            System.out.println("ERROR MESSAGE: STORE NAME ALREADY EXISTS");
-        } else {
             waitToElementClickable(ShopifyPageUI.CREATE_YOUR_STORE_BUTTON);
             clickToElement(ShopifyPageUI.CREATE_YOUR_STORE_BUTTON);
             clickToElement(ShopifyPageUI.CREATE_YOUR_STORE_BUTTON);
-        }
     }
 
     public boolean isRegisterInfoAcceptable() {
@@ -83,7 +79,6 @@ public class ShopifyPO extends AbstractPage {
     }
 
     public boolean isTheStoreCreated() {
-//        sleepInSecond(2);
         return isElementDisplayed(ShopifyPageUI.SELECT_PLAN_MSG);
     }
 
@@ -104,11 +99,9 @@ public class ShopifyPO extends AbstractPage {
 
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(fileName);
-
+            fileWriter = new FileWriter(fileName, true);
             //Write the CSV file Header
 //            fileWriter.append(Constants.FILE_HEADER);
-
             //Add a new line separator after the header
 //            fileWriter.append(Constants.NEW_LINE_SEPARATOR);
 

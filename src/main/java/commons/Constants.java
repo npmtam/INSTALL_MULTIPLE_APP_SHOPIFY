@@ -8,9 +8,9 @@ public class Constants {
     public static final int RAMDOM_BOUND = 10;
 
     //REGISTER
-    public static String EMAIL = "original_install_";
+    public static String EMAIL = "original_install_data";
     public static final String SHOPIFY_PASSWORD = "Abc123";
-    public static final String STORE_NAME = "Original Store Test";
+    public static final String STORE_NAME = "Original Stores";
 
     //TELLING US A LITTLE ABOUT YOURSELF
     public static final String ALREADY_SELLING = "I’m just playing around";
