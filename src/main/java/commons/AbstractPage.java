@@ -29,6 +29,7 @@ public class AbstractPage {
     Set<String> allWindows;
     Actions action;
     long shortTimeout = 3;
+    long midTimeout = 5;
     long longTimeout = 30;
 
     public AbstractPage(WebDriver driver) {
@@ -142,6 +143,13 @@ public class AbstractPage {
     }
 
     public void scrollToElement(String locator) {
+        element = driver.findElement(By.xpath(locator));
+        jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
+    }
+
+    public void scrollToElement(String locator, String attribute) {
+        locator = String.format(locator, attribute);
         element = driver.findElement(By.xpath(locator));
         jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
@@ -407,6 +415,18 @@ public class AbstractPage {
         } else {
             return false;
         }
+    }
+
+    public boolean isLoginToAnotherAccountPresentInDOM(String locator){
+        overideGlobalTimeout(midTimeout);
+        elements = driver.findElements(By.xpath(locator));
+        overideGlobalTimeout(longTimeout);
+        if (elements.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public boolean isCurrentURLContains(String valueContains) {

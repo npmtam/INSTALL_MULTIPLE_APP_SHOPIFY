@@ -77,7 +77,7 @@ public class OriginalPO extends AbstractPage {
     public void installApp() {
         inputStoreURL(Constants.STORE_URL_CSV);
         clickToLoginButton();
-        if (isElementPresentInDOM(OriginalUI.LOGIN_TO_ANOTHER_ACCOUNT)) {
+        if (isLoginToAnotherAccountPresentInDOM(OriginalUI.LOGIN_TO_ANOTHER_ACCOUNT)) {
             clickToLoginToAnotherAccount();
         }
         inputToLoginTextboxes("email", Constants.STORE_EMAIL_CSV);
@@ -85,6 +85,7 @@ public class OriginalPO extends AbstractPage {
         inputToLoginTextboxes("password", Constants.SHOPIFY_PASSWORD);
         clickToDynamicButtons("Log in");
         if (isElementPresentInDOM(OriginalUI.DYNAMIC_BUTTONS, "Install unlisted app")) {
+            scrollToElement(OriginalUI.DYNAMIC_BUTTONS, "Install unlisted app");
             clickToDynamicButtons("Install unlisted app");
         }
     }

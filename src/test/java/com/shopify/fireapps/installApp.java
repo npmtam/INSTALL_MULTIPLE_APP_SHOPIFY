@@ -5,6 +5,7 @@ import commons.AbstractTest;
 import commons.Constants;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -31,6 +32,10 @@ public class installApp extends AbstractTest {
         log.info("Step 01: Open Origin Website");
         originalPO = PageGeneratorManager.getOriginalPage(driver);
         originalPO.readDataCsv();
+    }
 
+    @AfterTest
+    public void afterTest(){
+        closeBrowserAndDriver(driver);
     }
 }
