@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class Constants {
     static String rootFolder = System.getProperty("user.dir");
     public static final String URL = "https://shopify.com/";
+    public static final String ORIGINAL_URL = "https://origin-dev.fireapps.io/install";
     public static final int RAMDOM_BOUND = 10;
 
     //REGISTER
@@ -30,5 +31,11 @@ public class Constants {
     public static final String COMMA_DELIMITER = ",";
     public static final String NEW_LINE_SEPARATOR = "\n";
     public static final String FILE_HEADER = "URL, Email, Store Name, Store Type";
+
+    //READ DATA
+    public static String STORE_URL_CSV = null;
+    public static String STORE_EMAIL_CSV = null;
+    public static String STORE_NAME_CSV = null;
+    public static String STORE_TYPE_CSV = null;
 
 }

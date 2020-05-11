@@ -23,4 +23,5 @@ public class ShopifyPageUI {
 
     //Admin Page
     public static final String SELECT_PLAN_MSG = "//p[text()='Your trial just started']";
+
 }
