@@ -10,7 +10,7 @@ public class Main {
     private static final String COMMA_DELIMITER = ",";
     private static final String root_Path = System.getProperty("user.dir");
     private static String file = root_Path + "/src/test/resources/readStoreData.csv";
-    private static String url, urlUncut, email, storeName, storeType;
+    private static String stt, url, urlUncut, email, storeName, storeType;
 
     public static void main(String[] args) {
         BufferedReader br = null;
@@ -51,13 +51,15 @@ public class Main {
     }
 
     private static void printStoreData(List<String> store) {
-        urlUncut = store.get(0);
-        email = store.get(1);
-        storeName = store.get(2);
-        storeType = store.get(3);
+        stt = store.get(0);
+        urlUncut = store.get(1);
+        email = store.get(2);
+        storeName = store.get(3);
+        storeType = store.get(4);
         String url2 = urlUncut.substring(8);
         url = url2.substring(0, url2.length() - 14);
         if (storeType.equals("Premium")) {
+            System.out.println("STT: " + stt);
             System.out.println("URL: " + url);
             System.out.println("Email: " + email);
             System.out.println("Store Name: " + storeName);

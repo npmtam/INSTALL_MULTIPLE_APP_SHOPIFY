@@ -90,12 +90,13 @@ public class OriginalPO extends AbstractPage {
     }
 
     public void initStoreData(List<String> store) {
-        String url = store.get(0);
+        String stt = store.get(0);
+        String url = store.get(1);
         String urlSplit1 = url.substring(8);
         Constants.STORE_URL_CSV = urlSplit1.substring(0, urlSplit1.length() - 14);
-        Constants.STORE_EMAIL_CSV = store.get(1);
-        Constants.STORE_NAME_CSV = store.get(2);
-        Constants.STORE_TYPE_CSV = store.get(3);
+        Constants.STORE_EMAIL_CSV = store.get(2);
+        Constants.STORE_NAME_CSV = store.get(3);
+        Constants.STORE_TYPE_CSV = store.get(4);
 
         if (Constants.STORE_TYPE_CSV.equals(Constants.PREMIUM_PAN)) {
             driver.get(Constants.ORIGINAL_URL);
