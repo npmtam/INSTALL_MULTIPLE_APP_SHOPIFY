@@ -18,9 +18,9 @@ public class AbstractTest {
 	private WebDriver driver;
 	String rootFolder = System.getProperty("user.dir");
 
-	protected final Log log;
+	public final Log log;
 
-	protected AbstractTest() {
+	public AbstractTest() {
 		log = LogFactory.getLog(getClass());
 	}
 
@@ -106,7 +106,7 @@ public class AbstractTest {
 		}
 	}
 
-	private boolean checkTrue(boolean condition) {
+	public boolean checkTrue(boolean condition) {
 		boolean pass = true;
 		try {
 			if (condition == true) {
@@ -126,7 +126,7 @@ public class AbstractTest {
 		return pass;
 	}
 
-	protected boolean verifyTrue(boolean condition) {
+	public boolean verifyTrue(boolean condition) {
 		return checkTrue(condition);
 	}
 

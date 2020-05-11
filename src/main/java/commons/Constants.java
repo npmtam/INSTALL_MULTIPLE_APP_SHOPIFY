@@ -38,4 +38,11 @@ public class Constants {
     public static String STORE_NAME_CSV = null;
     public static String STORE_TYPE_CSV = null;
 
+    //PLAN TYPES
+    public static final String PREMIUM_PAN = "Premium";
+    public static final String ESSENTIAL_PLAN = "Essential";
+    public static final String STARTER_PLAN = "Starter";
+    public static final String NO_PLAN = "No-plan";
+
+
 }

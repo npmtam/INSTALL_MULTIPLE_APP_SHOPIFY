@@ -333,7 +333,13 @@ public class AbstractPage {
         by = By.xpath(locator);
         waitExplicit = new WebDriverWait(driver, longTimeout);
         waitExplicit.until(ExpectedConditions.elementToBeClickable(by));
+    }
 
+    public void waitToElementClickable(String locator, String value){
+        locator = String.format(locator, value);
+        by = By.xpath(locator);
+        waitExplicit = new WebDriverWait(driver, longTimeout);
+        waitExplicit.until(ExpectedConditions.elementToBeClickable(by));
     }
 
     public boolean isElementEquals(String locator, String expectedResult) {
@@ -382,6 +388,18 @@ public class AbstractPage {
 
     public boolean isElementPresentInDOM(String locator) {
         overideGlobalTimeout(shortTimeout);
+        elements = driver.findElements(By.xpath(locator));
+        overideGlobalTimeout(longTimeout);
+        if (elements.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isElementPresentInDOM(String locator, String attribute) {
+        overideGlobalTimeout(shortTimeout);
+        locator = String.format(locator, attribute);
         elements = driver.findElements(By.xpath(locator));
         overideGlobalTimeout(longTimeout);
         if (elements.size() > 0) {

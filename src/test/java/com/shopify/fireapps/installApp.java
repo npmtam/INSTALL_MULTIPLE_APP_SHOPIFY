@@ -8,11 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pageObject.OriginalPO;
 import pageObject.ShopifyPO;
 
 public class installApp extends AbstractTest {
     private WebDriver driver;
     private AbstractPage abstractPage;
+    private OriginalPO originalPO;
     private ShopifyPO shopifyPage;
 
     @Parameters("browser")
@@ -26,8 +28,9 @@ public class installApp extends AbstractTest {
     @Test
     public void installOriginalApp(){
         //Login
-        log.info("Step 01: Open Shopify");
-        driver.get(Constants.URL);
+        log.info("Step 01: Open Origin Website");
+        originalPO = PageGeneratorManager.getOriginalPage(driver);
+        originalPO.readDataCsv();
 
     }
 }

@@ -9,10 +9,10 @@ import java.util.List;
 public class Main {
     private static final String COMMA_DELIMITER = ",";
     private static final String root_Path = System.getProperty("user.dir");
-    private static String file = root_Path+"/src/test/resources/readStoreData.csv";
+    private static String file = root_Path + "/src/test/resources/readStoreData.csv";
     private static String url, urlUncut, email, storeName, storeType;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         BufferedReader br = null;
         try {
             String line;
@@ -57,10 +57,11 @@ public class Main {
         storeType = store.get(3);
         String url2 = urlUncut.substring(8);
         url = url2.substring(0, url2.length() - 14);
-        System.out.println("URL: " + url);
-        System.out.println("Email: " + email);
-        System.out.println("Store Name: " + storeName);
-        System.out.println("Store Type: " + storeType);
-
+        if (storeType.equals("Premium")) {
+            System.out.println("URL: " + url);
+            System.out.println("Email: " + email);
+            System.out.println("Store Name: " + storeName);
+            System.out.println("Store Type: " + storeType);
+        }
     }
 }
