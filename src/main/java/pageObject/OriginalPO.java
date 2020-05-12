@@ -79,6 +79,7 @@ public class OriginalPO extends AbstractPage {
         inputStoreURL(Constants.STORE_URL_CSV);
         clickToLoginButton();
         if (isLoginToAnotherAccountPresentInDOM(OriginalUI.LOGIN_TO_ANOTHER_ACCOUNT)) {
+            scrollToElement(OriginalUI.LOGIN_TO_ANOTHER_ACCOUNT);
             clickToLoginToAnotherAccount();
         }
         inputToLoginTextboxes("email", Constants.STORE_EMAIL_CSV);
