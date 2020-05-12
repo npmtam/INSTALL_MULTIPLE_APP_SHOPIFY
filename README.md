@@ -21,12 +21,12 @@ The parameter you can change: <br>
 - STORE NAME: this is the format of store name, when running the methods, the tool will add the random number (4 digits) to store name.<br>
 - PASSWORD: This password will be used for all the stores, should not change. <br>
 
-<b> How to define the number of the store that I want to create? </b>
-To define the number of reapeat, access the file in the directory: src/test/java/createStore.java <br>
+<b> How to define the number of the store that I want to create? </b> <br>
+To define the number of reapeat, access the file in the directory: <i>src/test/java/createStore.java</i> <br>
 Check the @Test annotation. There is a "invocationCount" parameter beside the @Test annotation.<br>
 Change the number of "invocationCount" value.<br>
 For example: If you want to create 50 Shopify store. Change this: <b>@Test(invocationCount=50)</b>. <br>
-After run the "runCreateShopifyStore.xml", the data will be recorded automatically to <b>storeData.csv</b> file the directory: src/test/resources/ <br>
+After run the "runCreateShopifyStore.xml", the data will be recorded automatically to <b>storeData.csv</b> file the directory: <i>src/test/resources/</i> <br>
 This file will contains the parameters of the stores that was created: <br>
 - Store URL <br>
 - Email <br>
@@ -35,3 +35,14 @@ This file will contains the parameters of the stores that was created: <br>
 The password is same as the Constants.PASSWORD parameter <br>
 <br>
 <b>2. Install Original app and select the plan. </b> <br>
+This feature will install the Original file and select the plan depends on the parameters on the readStoreData.csv file. <br>
+Go to Store Data sheet, select download as a CSV file then paste to the directory: <i>project/src/test/resources.</i> <br>
+The tool will read the parameters (Store URL, Email) to login to the Shopify store. <br>
+Then will install the Original app and select the plan depends on the "Store Type" column in the CSV file.
+
+<b>III. Author: </b> <br>
+Creator: Nguyen Phuc Minh Tam <br>
+Email: tamnpm@fireapps.vn <br>
+<br>
+<b><i>Thanks for reading!</b></i>
+
