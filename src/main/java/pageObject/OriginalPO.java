@@ -18,6 +18,7 @@ public class OriginalPO extends AbstractPage {
     AbstractTest abstractTest = new AbstractTest();
     String root_Path = System.getProperty("user.dir");
     String fileCSV = root_Path + "/src/test/resources/readStoreData.csv";
+    boolean isInstalledApp;
 
     public OriginalPO(WebDriver driver) {
         super(driver);
@@ -88,6 +89,10 @@ public class OriginalPO extends AbstractPage {
             scrollToElement(OriginalUI.DYNAMIC_BUTTONS, "Install unlisted app");
             clickToDynamicButtons("Install unlisted app");
         }
+        else if (driver.getCurrentUrl().equals("https://origin-dev.fireapps.io/")) {
+            System.out.println("THIS ACCOUNT " + Constants.STORE_URL_CSV + " HAS BEEN SELECTED THE PLAN BEFORE");
+            isInstalledApp = true;
+        }
     }
 
     public void initStoreData(List<String> store) {
@@ -102,32 +107,40 @@ public class OriginalPO extends AbstractPage {
         if (Constants.STORE_TYPE_CSV.equals(Constants.PREMIUM_PAN)) {
             driver.get(Constants.ORIGINAL_URL);
             installApp();
-            selectPlan("PREMIUM");
-            clickToStart7DaysTrialButton();
-            clickToStartFreeTrialButton();
-            abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
-            System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            if (isElementPresentInDOM(OriginalUI.SELECT_PLAN_BUTTONS, "PREMIUM")) {
+                selectPlan("PREMIUM");
+                clickToStart7DaysTrialButton();
+                clickToStartFreeTrialButton();
+                abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            }
         } else if (Constants.STORE_TYPE_CSV.equals(Constants.ESSENTIAL_PLAN)) {
             driver.get(Constants.ORIGINAL_URL);
             installApp();
-            selectPlan("ESSENTIAL");
-            clickToStart7DaysTrialButton();
-            clickToStartFreeTrialButton();
-            abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
-            System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
-        } else if (Constants.STORE_TYPE_CSV.equals(Constants.STARTER_PLAN)){
+            if (isElementPresentInDOM(OriginalUI.SELECT_PLAN_BUTTONS, "ESSENTIAL")) {
+                selectPlan("ESSENTIAL");
+                clickToStart7DaysTrialButton();
+                clickToStartFreeTrialButton();
+                abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            }
+        } else if (Constants.STORE_TYPE_CSV.equals(Constants.STARTER_PLAN)) {
             driver.get(Constants.ORIGINAL_URL);
             installApp();
-            selectPlan("STARTER");
-            clickToStart7DaysTrialButton();
-            clickToStartFreeTrialButton();
-            abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
-            System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            if (isElementPresentInDOM(OriginalUI.SELECT_PLAN_BUTTONS, "STARTER")) {
+                selectPlan("STARTER");
+                clickToStart7DaysTrialButton();
+                clickToStartFreeTrialButton();
+                abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            }
         } else {
             driver.get(Constants.ORIGINAL_URL);
             installApp();
-            abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
-            System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            if (isInstalledApp == false) {
+                abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+            }
         }
     }
 

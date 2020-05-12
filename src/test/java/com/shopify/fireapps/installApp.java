@@ -34,7 +34,7 @@ public class installApp extends AbstractTest {
         originalPO.readDataCsv();
     }
 
-    @AfterTest
+//    @AfterTest
     public void afterTest(){
         closeBrowserAndDriver(driver);
     }
