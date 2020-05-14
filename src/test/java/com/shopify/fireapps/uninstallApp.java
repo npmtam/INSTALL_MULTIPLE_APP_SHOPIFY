@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import pageObject.OriginalPO;
 import pageObject.ShopifyPO;
 
-public class installApp extends AbstractTest {
+public class uninstallApp extends AbstractTest {
     private WebDriver driver;
     private AbstractPage abstractPage;
     private OriginalPO originalPO;
@@ -20,18 +20,17 @@ public class installApp extends AbstractTest {
 
     @Parameters("browser")
     @BeforeTest
-    public void beforeTest(String browserName) {
+    public void beforeTest(String browserName){
         driver = getBrowserDriver(browserName);
         abstractPage = new AbstractPage(driver);
-
+        driver.get(Constants.URL);
     }
 
     @Test
-    public void installOriginalApp(){
-        //Login
-        log.info("Read data from CSV file and Install app depends on Store Type column");
-        originalPO = PageGeneratorManager.getOriginalPage(driver);
-        originalPO.readDataCsv();
+    public void uninstallOriginalApp(){
+        log.info("Read data from CSV file and uninstall app for all account in file");
+        shopifyPage = PageGeneratorManager.getShopifyPage(driver);
+        shopifyPage.readDataAndDeleteApp();
     }
 
     @AfterTest

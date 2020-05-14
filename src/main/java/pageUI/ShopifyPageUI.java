@@ -23,5 +23,16 @@ public class ShopifyPageUI {
 
     //Admin Page
     public static final String SELECT_PLAN_MSG = "//p[text()='Your trial just started']";
+    public static final String STORE_NAME_LABEL = "//div[@class='_1lIG3']//span[text()='%s']";
+    public static final String APPS_MENU = "//a[@href='/admin/apps']";
+    public static final String DELETE_ORIGINAL = "//button[@aria-label='Delete origin-app-dev']";
+    public static final String CONFIRM_DELETE_ORIGINAL = "//div[@class='_1fyLs']//span[text()='Delete']";
+    public static final String DELETE_SUCCESS_MESSAGE = "//div[@id='Banner1Content']";
 
+    //Login
+    public static final String LOGIN_BUTTON = "//a[@href='/login' and @class='marketing-nav__item marketing-nav__item--user']";
+    public static final String LOGIN_TO_ANOTHER_ACCOUNT = "//a[text()='Log in to another Shopify ID']";
+    public static final String STORE_URL_TEXTBOX = "//input[@placeholder='myshop.myshopify.com']";
+    public static final String EMAIL_PASSWORD_TEXTBOXES = "//input[@name='account[%s]']";
+    public static final String DYNAMIC_BUTTON = "//button[text()='%s']";
 }

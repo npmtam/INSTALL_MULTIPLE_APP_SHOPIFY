@@ -33,6 +33,7 @@ public class Constants {
     public static final String FILE_HEADER = "URL, Email, Store Name, Store Type";
 
     //READ DATA
+    public static final String READ_CSV_FILE_PATH = rootFolder + "/src/test/resources/readStoreData.csv";
     public static String STORE_URL_CSV = null;
     public static String STORE_EMAIL_CSV = null;
     public static String STORE_NAME_CSV = null;
@@ -43,6 +44,9 @@ public class Constants {
     public static final String ESSENTIAL_PLAN = "Essential";
     public static final String STARTER_PLAN = "Starter";
     public static final String NO_PLAN = "No-plan";
+
+    //DELETE APP
+    public static final String DELETE_SUCCESS_MESSAGE = "You successfully deleted origin-app-dev.";
 
 
 }

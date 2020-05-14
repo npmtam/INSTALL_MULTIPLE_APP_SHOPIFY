@@ -16,8 +16,6 @@ public class OriginalPO extends AbstractPage {
     WebDriver driver;
     ReadDataCSV readDataCSV = new ReadDataCSV();
     AbstractTest abstractTest = new AbstractTest();
-    String root_Path = System.getProperty("user.dir");
-    String fileCSV = root_Path + "/src/test/resources/readStoreData.csv";
     boolean isInstalledApp;
 
     public OriginalPO(WebDriver driver) {
@@ -149,7 +147,7 @@ public class OriginalPO extends AbstractPage {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader(fileCSV));
+            br = new BufferedReader(new FileReader(Constants.READ_CSV_FILE_PATH));
 
             //Read file in java line by line
             while ((line = br.readLine()) != null) {
