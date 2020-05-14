@@ -41,8 +41,8 @@ The tool will read the parameters (Store URL, Email) to login to the Shopify sto
 Then will install the Original app and select the plan depends on the "Store Type" column in the CSV file.
 
 <b>III. Author: </b> <br>
-Creator: Nguyen Phuc Minh Tam <br>
-Email: tamnpm@fireapps.vn <br>
+<b>Creator:</b> Nguyen Phuc Minh Tam <br>
+<b>Email:</b> tamnpm@fireapps.vn <br>
 <br>
 <b><i>Thanks for reading!</b></i>
 
