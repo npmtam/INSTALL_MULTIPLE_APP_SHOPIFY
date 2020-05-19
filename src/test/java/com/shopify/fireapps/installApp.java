@@ -28,7 +28,6 @@ public class installApp extends AbstractTest {
 
     @Test
     public void installOriginalApp(){
-        //Login
         log.info("Read data from CSV file and Install app depends on Store Type column");
         originalPO = PageGeneratorManager.getOriginalPage(driver);
         originalPO.readDataCsv();

@@ -27,7 +27,7 @@ public class createStore extends AbstractTest {
         abstractPage = new AbstractPage(driver);
     }
 
-    @Test(invocationCount = 10)
+    @Test(invocationCount = 12)
     public void TC01_CreateShopifyStore() {
         //Init data
         Random random = new Random();

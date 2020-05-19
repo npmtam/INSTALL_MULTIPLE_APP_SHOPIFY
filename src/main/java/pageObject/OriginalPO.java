@@ -73,7 +73,12 @@ public class OriginalPO extends AbstractPage {
         return isElementDisplayed(OriginalUI.LOGO);
     }
 
-    public void installApp() {
+    public void clickToPricingMenu(){
+        waitToElementClickable(OriginalUI.PRICING_MENU);
+        clickToElement(OriginalUI.PRICING_MENU);
+    }
+
+    public void loginToOriginal(){
         inputStoreURL(Constants.STORE_URL_CSV);
         clickToLoginButton();
         if (isLoginToAnotherAccountPresentInDOM(OriginalUI.LOGIN_TO_ANOTHER_ACCOUNT)) {
@@ -84,15 +89,19 @@ public class OriginalPO extends AbstractPage {
         clickToDynamicButtons("Next");
         inputToLoginTextboxes("password", Constants.SHOPIFY_PASSWORD);
         clickToDynamicButtons("Log in");
+    }
+
+    public void installApp() {
+        loginToOriginal();
         if (isElementPresentInDOM(OriginalUI.DYNAMIC_BUTTONS, "Install unlisted app")) {
             scrollToElement(OriginalUI.DYNAMIC_BUTTONS, "Install unlisted app");
             clickToDynamicButtons("Install unlisted app");
-        }
-        else if (driver.getCurrentUrl().equals("https://origin-dev.fireapps.io/")) {
+        } else if (driver.getCurrentUrl().equals("https://origin-dev.fireapps.io/")) {
             System.out.println("THIS ACCOUNT " + Constants.STORE_URL_CSV + " HAS BEEN SELECTED THE PLAN BEFORE");
             isInstalledApp = true;
         }
     }
+
 
     public void initStoreData(List<String> store) {
         String stt = store.get(0);
@@ -166,6 +175,69 @@ public class OriginalPO extends AbstractPage {
             } catch (IOException crunchifyException) {
                 crunchifyException.printStackTrace();
             }
+        }
+    }
+
+
+    //CHANGE PLAN
+    public void changePlan(List<String> stores) {
+        String stt = stores.get(0);
+        String url = stores.get(1);
+        String urlSplit1 = url.substring(8);
+        Constants.STORE_URL_CSV = urlSplit1.substring(0, urlSplit1.length() - 14);
+        Constants.STORE_EMAIL_CSV = stores.get(2);
+        Constants.STORE_NAME_CSV = stores.get(3);
+        Constants.STORE_TYPE_CSV = stores.get(4);
+
+        driver.get(Constants.ORIGINAL_URL);
+        loginToOriginal();
+        //If No-plan before
+        if(isElementPresentInDOM(OriginalUI.SELECT_PLAN_BUTTONS, "PREMIUM")){
+            switch (Constants.STORE_TYPE_CSV){
+                case Constants.PREMIUM_PAN:
+                    selectPlan("PREMIUM");
+                    clickToStart7DaysTrialButton();
+                    clickToStartFreeTrialButton();
+                    abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                    System.out.println(Constants.STORE_NAME_CSV + " has been changed to PREMIUM");
+                    break;
+                case Constants.ESSENTIAL_PLAN:
+                    selectPlan("ESSENTIAL");
+                    clickToStart7DaysTrialButton();
+                    clickToStartFreeTrialButton();
+                    abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                    System.out.println(Constants.STORE_NAME_CSV + " has been changed to ESSENTIAL");
+                    break;
+                case Constants.STARTER_PLAN:
+                    selectPlan("STARTER");
+                    clickToStart7DaysTrialButton();
+                    clickToStartFreeTrialButton();
+                    abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                    System.out.println(Constants.STORE_NAME_CSV + " has been changed to STARTER");
+                    break;
+            }
+            //Can lam tiep phan nay
+        }
+        if (Constants.STORE_TYPE_CSV.equals(Constants.NO_PLAN)) {
+            if (!isElementPresentInDOM(OriginalUI.SELECT_PLAN_BUTTONS, "PREMIUM")) {
+                System.out.println("CAN NOT CHANGE THE PLAN FROM OTHERS TO NO-PLAN");
+            }
+        }
+        if (Constants.STORE_TYPE_CSV.equals(Constants.PREMIUM_PAN)) {
+
+            clickToPricingMenu();
+            selectPlan("PREMIUM");
+            if (isElementPresentInDOM(OriginalUI.YOU_ARE_HERE_BUTTON)) {
+                System.out.println("NO PLAN CHANGE");
+            }else{
+                clickToStart7DaysTrialButton();
+                clickToStartFreeTrialButton();
+                abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
+                System.out.println(Constants.STORE_NAME_CSV + " has been changed to PREMIUM");
+            }
+        }
+        if(Constants.STORE_TYPE_CSV.equals(Constants.ESSENTIAL_PLAN)){
+            clickToPricingMenu();
         }
     }
 

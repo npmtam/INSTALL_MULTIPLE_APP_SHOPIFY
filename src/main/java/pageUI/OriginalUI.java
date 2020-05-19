@@ -18,4 +18,5 @@ public class OriginalUI {
     //ORIGINAL APP
     public static final String LOGO = "//div[@class='a-logo-text']";
     public static final String PRICING_MENU = "//a[@href='/pricing']";
+    public static final String YOU_ARE_HERE_BUTTON = "//span[text()='YOU ARE HERE']/parent::button";
 }
