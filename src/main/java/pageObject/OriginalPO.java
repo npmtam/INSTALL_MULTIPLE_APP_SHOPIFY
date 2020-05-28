@@ -59,8 +59,8 @@ public class OriginalPO extends AbstractPage {
     }
 
     public void clickToStart7DaysTrialButton() {
-        waitToElementClickable(OriginalUI.START_TRIAL_7_DAYS_BUTTON);
-        clickToElement(OriginalUI.START_TRIAL_7_DAYS_BUTTON);
+        waitToElementClickable(OriginalUI.START_TRIAL_BUTTON);
+        clickToElement(OriginalUI.START_TRIAL_BUTTON);
     }
 
     public void clickToStartFreeTrialButton() {
@@ -121,6 +121,7 @@ public class OriginalPO extends AbstractPage {
                 clickToStartFreeTrialButton();
                 abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
                 System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+                System.out.println("Ordinal Numbers: " + stt + " | Plan: " + Constants.STORE_TYPE_CSV);
             }
         } else if (Constants.STORE_TYPE_CSV.equals(Constants.ESSENTIAL_PLAN)) {
             driver.get(Constants.ORIGINAL_URL);
@@ -131,6 +132,7 @@ public class OriginalPO extends AbstractPage {
                 clickToStartFreeTrialButton();
                 abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
                 System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+                System.out.println("Ordinal Numbers: " + stt + " | Plan: " + Constants.STORE_TYPE_CSV);
             }
         } else if (Constants.STORE_TYPE_CSV.equals(Constants.STARTER_PLAN)) {
             driver.get(Constants.ORIGINAL_URL);
@@ -141,6 +143,7 @@ public class OriginalPO extends AbstractPage {
                 clickToStartFreeTrialButton();
                 abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
                 System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+                System.out.println("Ordinal Numbers: " + stt + " | Plan: " + Constants.STORE_TYPE_CSV);
             }
         } else {
             driver.get(Constants.ORIGINAL_URL);
@@ -148,6 +151,7 @@ public class OriginalPO extends AbstractPage {
             if (isInstalledApp == false) {
                 abstractTest.verifyTrue(isElementDisplayed(OriginalUI.LOGO));
                 System.out.println(Constants.STORE_NAME_CSV + " has been installed the Original App");
+                System.out.println("Ordinal Numbers: " + stt + " | Plan: " + Constants.STORE_TYPE_CSV);
             }
         }
     }

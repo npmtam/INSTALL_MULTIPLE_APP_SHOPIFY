@@ -12,7 +12,7 @@ public class OriginalUI {
 
     //SELECT PLAN
     public static final String SELECT_PLAN_BUTTONS = "//span[contains(text(),'%s')]/parent::div";
-    public static final String START_TRIAL_7_DAYS_BUTTON = "//span[text()='Start 7 - day for trial']/parent::button";
+    public static final String START_TRIAL_BUTTON = "//button[@class='a-btn a-btn-primary']";
     public static final String START_FREE_TRIAL_BUTTON = "//button[@id='approve-charges-button']";
 
     //ORIGINAL APP

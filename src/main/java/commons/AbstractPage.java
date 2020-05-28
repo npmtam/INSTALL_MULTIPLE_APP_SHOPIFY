@@ -98,6 +98,17 @@ public class AbstractPage {
         element.click();
     }
 
+    public void clickToElementByJS(String locator) {
+        WebElement element = driver.findElement(By.xpath(locator));
+        jsExecutor.executeScript("arguments[0].click();", element);
+    }
+
+    public void clickToElementByJS(String locator, String attributeValue){
+        locator = String.format(locator, attributeValue);
+        element = driver.findElement(By.xpath(locator));
+        jsExecutor.executeScript("arguments[0].click();", element);
+    }
+
     public void sendKeyToElement(String locator, String value) {
         element = driver.findElement(By.xpath(locator));
         element.clear();

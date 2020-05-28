@@ -35,4 +35,6 @@ public class ShopifyPageUI {
     public static final String STORE_URL_TEXTBOX = "//input[@placeholder='myshop.myshopify.com']";
     public static final String EMAIL_PASSWORD_TEXTBOXES = "//input[@name='account[%s]']";
     public static final String DYNAMIC_BUTTON = "//button[text()='%s']";
+
+    public static final String DELETE_APP_CONFIRMATION_TEXT = "//section[contains(text(), 'By deleting origin-app-dev')]";
 }

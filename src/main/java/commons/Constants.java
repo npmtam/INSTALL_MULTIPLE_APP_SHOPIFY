@@ -27,7 +27,7 @@ public class Constants {
     public static String PHONE_NUMBER = "098877678";
 
     //WRITE DATA
-    public static final String CSV_FILE_PATH = rootFolder + "/src/test/resources/storeData.csv";
+    public static final String WRITE_CSV_FILE_PATH = rootFolder + "/src/test/resources/storeData.csv";
     public static final String COMMA_DELIMITER = ",";
     public static final String NEW_LINE_SEPARATOR = "\n";
     public static final String FILE_HEADER = "URL, Email, Store Name, Store Type";

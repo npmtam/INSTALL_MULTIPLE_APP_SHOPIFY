@@ -134,6 +134,7 @@ public class ShopifyPO extends AbstractPage {
     public void clickToConfirmDeleteOriginal() {
         sleepInSecond(1);
         waitToElementClickable(ShopifyPageUI.CONFIRM_DELETE_ORIGINAL);
+        waitToElementVisible(ShopifyPageUI.DELETE_APP_CONFIRMATION_TEXT);
         clickToElement(ShopifyPageUI.CONFIRM_DELETE_ORIGINAL);
     }
 
@@ -207,8 +208,10 @@ public class ShopifyPO extends AbstractPage {
             String deleteSuccess = getTextElement(ShopifyPageUI.DELETE_SUCCESS_MESSAGE);
             abstractTest.verifyTrue(deleteSuccess.equals(Constants.DELETE_SUCCESS_MESSAGE));
             System.out.println("THE STORE " + Constants.STORE_NAME_CSV + " HAS BEEN REMOVED THE ORIGINAL APP");
+            System.out.println("Ordinal Numbers: " + stt);
         } else {
             System.out.println("THIS STORE ALREADY DELETED THE ORIGINAL APP");
+            System.out.println("Ordinal Numbers: " + stt);
         }
 
     }

@@ -89,7 +89,7 @@ public class createStore extends AbstractTest {
         System.out.println("Store Name: " + storeName);
 
         log.info("Step 08: Write data to the csv");
-        shopifyPage.writeDataToCsv(Constants.CSV_FILE_PATH, email, storeName);
+        shopifyPage.writeDataToCsv(Constants.WRITE_CSV_FILE_PATH, email, storeName);
         System.out.println("Written Data");
     }
 
