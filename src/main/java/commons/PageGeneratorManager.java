@@ -3,6 +3,7 @@ package commons;
 import org.openqa.selenium.WebDriver;
 import pageObject.OriginalPO;
 import pageObject.ShopifyPO;
+import pageObject.WebsitePO;
 import pageObject.WhatNewPO;
 
 public class PageGeneratorManager {
@@ -16,5 +17,9 @@ public class PageGeneratorManager {
 
     public static WhatNewPO getWhatNewPage(WebDriver driver){
         return new WhatNewPO(driver);
+    }
+
+    public static WebsitePO getWebsitePage(WebDriver driver){
+        return new WebsitePO(driver);
     }
 }

@@ -122,7 +122,7 @@ public class AbstractTest {
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 		}
-		System.out.println("Status = " + pass);
+//		System.out.println("Status = " + pass);
 		return pass;
 	}
 
