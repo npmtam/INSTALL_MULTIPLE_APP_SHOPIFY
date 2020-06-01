@@ -49,4 +49,31 @@ public class Constants {
     public static final String DELETE_SUCCESS_MESSAGE = "You successfully deleted origin-app-dev.";
 
 
+    //WEBSITE CHECK FUNCTIONS
+    public static final String WEBSITE_URL = "https://beta.fireapps.io";
+    public static final String WEBSITE_HOME_BUTTON = "Home";
+    public static final String WEBSITE_ALI_REVIEW_URL = "https://beta.fireapps.io/shopify-apps/ali-reviews/";
+    public static final String WEBSITE_ALI_ORDERS_URL = "https://beta.fireapps.io/shopify-apps/ali-orders/";
+    public static final String WEBSITE_SALES_BOX_URL = "https://beta.fireapps.io/shopify-apps/sales-box/";
+    public static final String WEBSITE_ALI_HUNTER_URL = "https://beta.fireapps.io/shopify-apps/ali-hunter/";
+    public static final String HELP_CENTER_URL = "https://help.fireapps.io/en/";
+    public static final String BLOG_POST_TITLE1 = "10 Best Shopify apps that you must know before starting an e-commerce";
+    public static final String BLOG_POST_TITLE2 = "What are Shopify Apps? Pro tips to choose best apps for your store";
+    public static final String BLOG_POST_TITLE3 = "Shopify apps are the best way to promote customer experience for your";
+
+    //SOCIAL LINKS
+    public static final String FOOTER_FACEBOOK_URL = "https://www.facebook.com/fireapps.io/";
+    public static final String FOOTER_INSTAGRAM_URL = "https://www.instagram.com/fireapps.shopify/";
+    public static final String FOOTER_TWITTER_URL = "https://twitter.com/Fireapps_io";
+    public static final String FOOTER_YOUTUBE_URL = "https://www.youtube.com/channel/UCTLlWKPKBlHnJA8CYrIEWGg";
+    public static final String FACEBOOK_TITLE = "FireApps - Premium Apps for Shopify Stores - Home";
+    public static final String INSTAGRAM_TITLE = "Fireapps.io (@fireapps.shopify) • Instagram photos and videos";
+    public static final String TWITTER_TITLE = "FireApps (@Fireapps_io) / Twitter";
+    public static final String YOUTUBE_TITLE = "FireApps - Premium Apps for Shopify Stores - YouTube";
+
+
+
+
+
+
 }

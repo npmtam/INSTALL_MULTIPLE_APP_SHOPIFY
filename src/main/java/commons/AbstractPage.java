@@ -92,6 +92,13 @@ public class AbstractPage {
         element.click();
     }
 
+    public void doubleClickToElement(String locator, String value) {
+        locator = String.format(locator, value);
+        element = driver.findElement(By.xpath(locator));
+        element.click();
+        element.click();
+    }
+
     public void clickToElement(String locator, String... values) {
         locator = String.format(locator, (Object[]) values);
         element = driver.findElement(By.xpath(locator));
@@ -145,7 +152,6 @@ public class AbstractPage {
         element = driver.findElement(By.xpath(locator));
         select = new Select(element);
         select.selectByIndex(index);
-
     }
 
     public String getFirstItemInDropdown(String locator) {
