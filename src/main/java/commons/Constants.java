@@ -63,13 +63,20 @@ public class Constants {
 
     //SOCIAL LINKS
     public static final String FOOTER_FACEBOOK_URL = "https://www.facebook.com/fireapps.io/";
-    public static final String FOOTER_INSTAGRAM_URL = "https://www.instagram.com/fireapps.shopify/";
+    public static final String FOOTER_INSTAGRAM_URL = "https://www.instagram.com/accounts/login/?next=/fireapps.shopify/";
     public static final String FOOTER_TWITTER_URL = "https://twitter.com/Fireapps_io";
     public static final String FOOTER_YOUTUBE_URL = "https://www.youtube.com/channel/UCTLlWKPKBlHnJA8CYrIEWGg";
     public static final String FACEBOOK_TITLE = "FireApps - Premium Apps for Shopify Stores - Home";
     public static final String INSTAGRAM_TITLE = "Fireapps.io (@fireapps.shopify) • Instagram photos and videos";
     public static final String TWITTER_TITLE = "FireApps (@Fireapps_io) / Twitter";
     public static final String YOUTUBE_TITLE = "FireApps - Premium Apps for Shopify Stores - YouTube";
+
+    //BLOG CATEGORIES
+    public static final String BLOG_ECOMMERCE = "eCommerce Marketing";
+    public static final String BLOG_SUPERTOOLS = "Super Tools";
+    public static final String BLOG_CASESTUDIES = "Case Studies";
+    public static final String BLOG_EXTRATALK = "Extra Talk";
+
 
 
 

@@ -1,5 +1,7 @@
 package commons;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,11 +10,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -458,6 +457,14 @@ public class AbstractPage {
         return elements.size();
     }
 
+    public int countElements(String locators, String attribute) {
+        locators = String.format(locators, attribute);
+        overideGlobalTimeout(shortTimeout);
+        elements = driver.findElements(By.xpath(locators));
+        overideGlobalTimeout(longTimeout);
+        return elements.size();
+    }
+
     public List<String> getTextListElements(String locator) {
         String textElement = null;
         List<String> allText = new ArrayList<String>();
@@ -503,5 +510,14 @@ public class AbstractPage {
     public long getIndexFromProductName(String productName) {
         jsExecutor = (JavascriptExecutor) driver;
         return (long) jsExecutor.executeScript("return $(document.evaluate(\"//a[text()='" + productName + "']/parent::td\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue).index() +1;");
+    }
+
+    public void takeScreenshot(String fileName) {
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(scrFile, new File("C:\\Attachments\\Selenium Attachments\\" + fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

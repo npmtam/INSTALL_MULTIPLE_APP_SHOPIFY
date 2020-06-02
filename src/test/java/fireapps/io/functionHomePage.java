@@ -5,31 +5,30 @@ import commons.AbstractTest;
 import commons.Constants;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObject.WebsitePO;
 
-public class checkWebsiteFunctions extends AbstractTest {
+public class functionHomePage extends AbstractTest {
     private WebDriver driver;
     private AbstractPage abstractPage;
     private WebsitePO websitePage;
 
     @Parameters("browser")
-    @BeforeTest
+    @BeforeClass
     public void beforeTest(String browserName){
         driver = getBrowserDriver(browserName);
         abstractPage = new AbstractPage(driver);
         driver.get(Constants.WEBSITE_URL);
     }
 
-    @Test
+    @Test(enabled = true)
     public void S1_checkHeaderLinks(){
         log.info("Header 1: Home button");
         websitePage = PageGeneratorManager.getWebsitePage(driver);
         websitePage.clickToHeaderDynamic(Constants.WEBSITE_HOME_BUTTON);
         verifyTrue(websitePage.isHomePageAccessed());
+        log.info("Take the Home Page screenshot");
+        abstractPage.takeScreenshot("HomePage.jpg");
 
         log.info("Header 2: Shopify apps button");
         websitePage.clickToHeaderDynamic("SHOPIFY APPS");
@@ -55,7 +54,7 @@ public class checkWebsiteFunctions extends AbstractTest {
         verifyTrue(websitePage.isHomePageAccessed());
     }
 
-    @Test
+    @Test(enabled = true)
     public void S2_checkBodyFunctions(){
         log.info("Body 1: Get App Now button");
         websitePage = PageGeneratorManager.getWebsitePage(driver);
@@ -67,6 +66,7 @@ public class checkWebsiteFunctions extends AbstractTest {
         log.info("Body 2: Ali Review in slide bar - Get App button");
         websitePage.clickToSlideBarButtons("1");
         verifyTrue(websitePage.isLogoDisplayedAfterSelectSlidebar("ar-logo.svg"));
+        abstractPage.takeScreenshot("AliReview.jpg");
         websitePage.clickToGetAppButtonInSlidebar(Constants.WEBSITE_ALI_REVIEW_URL);
         verifyTrue(websitePage.isGetAppPageAccessed(Constants.WEBSITE_ALI_REVIEW_URL));
         driver.get(Constants.WEBSITE_URL);
@@ -76,6 +76,7 @@ public class checkWebsiteFunctions extends AbstractTest {
         websitePage.clickToSlideBarButtons("2");
         websitePage.clickToSlideBarButtons("2");
         verifyTrue(websitePage.isLogoDisplayedAfterSelectSlidebar("ao-logo.svg"));
+        abstractPage.takeScreenshot("AliOrders.jpg");
         websitePage.clickToGetAppButtonInSlidebar(Constants.WEBSITE_ALI_ORDERS_URL);
         verifyTrue(websitePage.isGetAppPageAccessed(Constants.WEBSITE_ALI_ORDERS_URL));
         driver.get(Constants.WEBSITE_URL);
@@ -85,6 +86,7 @@ public class checkWebsiteFunctions extends AbstractTest {
         websitePage.clickToSlideBarButtons("3");
         websitePage.clickToSlideBarButtons("3");
         verifyTrue(websitePage.isLogoDisplayedAfterSelectSlidebar("sb-logo.svg"));
+        abstractPage.takeScreenshot("SalesBox.jpg");
         websitePage.clickToGetAppButtonInSlidebar(Constants.WEBSITE_SALES_BOX_URL);
         verifyTrue(websitePage.isGetAppPageAccessed(Constants.WEBSITE_SALES_BOX_URL));
         driver.get(Constants.WEBSITE_URL);
@@ -94,6 +96,7 @@ public class checkWebsiteFunctions extends AbstractTest {
         websitePage.clickToSlideBarButtons("4");
         websitePage.clickToSlideBarButtons("4");
         verifyTrue(websitePage.isLogoDisplayedAfterSelectSlidebar("ah-logo.svg"));
+        abstractPage.takeScreenshot("AliHunter.jpg");
         websitePage.clickToGetAppButtonInSlidebar(Constants.WEBSITE_ALI_HUNTER_URL);
         verifyTrue(websitePage.isGetAppPageAccessed(Constants.WEBSITE_ALI_HUNTER_URL));
         driver.get(Constants.WEBSITE_URL);
@@ -117,8 +120,8 @@ public class checkWebsiteFunctions extends AbstractTest {
         verifyTrue(websitePage.isHomePageAccessed());
     }
 
-    @Test
-    public void S3_CheckFooterFunctions(){
+    @Test(enabled = true)
+    public void S3_checkFooterFunctions(){
         log.info("Footer 1: Shopify Apps link");
         websitePage = PageGeneratorManager.getWebsitePage(driver);
         websitePage.clickToFooterMenus("Shopify Apps");
@@ -157,6 +160,7 @@ public class checkWebsiteFunctions extends AbstractTest {
 
         log.info("Footer 9: Instagram icon");
         websitePage.clickToFooterSocialIcons("instagram");
+        abstractPage.sleepInSecond(1);
         verifyTrue(websitePage.isFooterSocialAccessed(Constants.INSTAGRAM_TITLE, Constants.FOOTER_INSTAGRAM_URL));
         abstractPage.switchToWindowsByTitle("Terms Of Service - Fireapps");
 
@@ -169,9 +173,13 @@ public class checkWebsiteFunctions extends AbstractTest {
         websitePage.clickToFooterSocialIcons("youtube");
         verifyTrue(websitePage.isFooterSocialAccessed(Constants.YOUTUBE_TITLE, Constants.FOOTER_YOUTUBE_URL));
         abstractPage.switchToWindowsByTitle("Terms Of Service - Fireapps");
+
+        log.info("Footer 11: Back to top button");
+        websitePage.clickToBackToTopButton();
+        verifyTrue(websitePage.isPageBackToTop());
     }
 
-    @AfterTest
+    @AfterClass
     public void closeBowserAdDeleteBDatta(){
         closeBrowserAndDriver(driver);
     }

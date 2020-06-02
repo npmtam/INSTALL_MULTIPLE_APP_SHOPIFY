@@ -3,9 +3,11 @@
 
 
     <test name="RUN ON CHROME UI">
-        <parameter name="browser" value="chrome" />
+        <parameter name="browser" value="chrome_headless" />
         <classes>
-            <class name="fireapps.io.checkWebsiteFunctions" />
+            <class name="fireapps.io.functionHomePage" />
+<!--            <class name="fireapps.io.functionsShopifyApps" />-->
+            <class name="fireapps.io.functionBlogPage" />
         </classes>
     </test>
 

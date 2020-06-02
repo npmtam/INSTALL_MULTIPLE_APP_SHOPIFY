@@ -4,6 +4,7 @@ import commons.AbstractPage;
 import commons.AbstractTest;
 import commons.Constants;
 import commons.ReadDataCSV;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import pageUI.WebsiteUI;
 
@@ -63,6 +64,7 @@ public class WebsitePO extends AbstractPage {
     }
 
     public boolean isLogoDisplayedAfterSelectSlidebar(String fileLogo){
+        scrollToElement(WebsiteUI.APPS_LOGO_IN_SLIDEBAR, fileLogo);
         return isElementDisplayed(WebsiteUI.APPS_LOGO_IN_SLIDEBAR, fileLogo);
     }
 
@@ -126,4 +128,71 @@ public class WebsitePO extends AbstractPage {
         switchToWindowsByTitle(tabTitle);
         return getCurrentPageURL().equals(expectedURL);
     }
+
+    public void clickToBackToTopButton(){
+        scrollToElement(WebsiteUI.FOOTER_MENUS, "Terms of Service");
+        waitToElementClickable(WebsiteUI.BACK_TO_TOP_BUTTON);
+        clickToElement(WebsiteUI.BACK_TO_TOP_BUTTON);
+    }
+
+    public boolean isPageBackToTop(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        sleepInSecond(1);
+        Long value = (Long) jsExecutor.executeScript("return window.pageYOffset;");
+        return value==0;
+    }
+
+    public boolean isSlideBannerInBlogHomeDisplayed(){
+        return isElementDisplayed(WebsiteUI.BLOG_HOME_SLIDE_BANNER);
+    }
+
+    public boolean isCategoryHave3SlidePosts(String category){
+        int slidePostsNum = countElements(WebsiteUI.BLOG_3POST_EACH_CATEGORY, category);
+        return slidePostsNum==3;
+    }
+
+    public boolean isTopBannerBlogDisplayed(){
+        return isElementDisplayed(WebsiteUI.BLOG_TOP_BANNER_AT_CATEGORY);
+    }
+
+    public void clickToCategoryOnMenu(String category){
+        waitToElementClickable(WebsiteUI.BLOG_CATEGORIES_MENU, category);
+        clickToElement(WebsiteUI.BLOG_CATEGORIES_MENU, category);
+    }
+
+    public boolean isCategoryTitleEquals(String categoryName){
+        String categoryTitle = getTextElement(WebsiteUI.BLOG_CATEGORY_TITLE);
+        return categoryName.equals(categoryTitle);
+    }
+
+    public void clickToSearchIcon(){
+        waitToElementClickable(WebsiteUI.BLOG_SEARCH_BUTTON);
+        clickToElement(WebsiteUI.BLOG_SEARCH_BUTTON);
+    }
+
+    public void inputToSearchTextBox(String searchKeyword){
+        waitToElementVisible(WebsiteUI.BLOG_SEARCH_TEXTBOX);
+        sendKeyToElement(WebsiteUI.BLOG_SEARCH_TEXTBOX, searchKeyword);
+    }
+
+    public void clickToCloseSearchTextBox(){
+        waitToElementClickable(WebsiteUI.BLOG_CLOSE_SEARCH_BUTTON);
+        clickToElement(WebsiteUI.BLOG_CLOSE_SEARCH_BUTTON);
+    }
+
+    public void clickToSearchActionButton(){
+        waitToElementClickable(WebsiteUI.BLOG_SEARCH_ACTION_BUTTON);
+        clickToElement(WebsiteUI.BLOG_SEARCH_ACTION_BUTTON);
+    }
+
+    public boolean isTheSearchResultLabelContains(String keyword){
+        String searchResultLabel = getTextElement(WebsiteUI.BLOG_SEARCH_RESULT_LABEL);
+        return searchResultLabel.contains(keyword);
+    }
+
+    public boolean isSearchResultURLContains(String keyword){
+        String resultURL = getCurrentPageURL();
+        return resultURL.contains(keyword);
+    }
+
 }
