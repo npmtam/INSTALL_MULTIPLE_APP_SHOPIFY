@@ -15,6 +15,9 @@ public class WebsiteUI {
     public static final String APPS_LOGO_IN_SLIDEBAR = "//div[@class='a-logo']/img[@class='swiper-lazy swiper-lazy-loaded' and contains(@src, '%s')]";
     public static final String GET_APP_BUTTONS_IN_SLIDEBAR = "//a[@class='a-btn a-btn-pink btn rounded-pill' and contains(@href, '%s')]";
 
+    public static final String FEEDBACK_LABEL = "//h4[@class='a-text-lead']";
+    public static final String MAP_SLIDEBAR = "//div[@class='swiper-slide row align-items-center swiper-slide-visible swiper-slide-active' and @data-swiper-slide-index='%s']";
+
     //Blog articles at Home Page
     public static final String BLOG_POST_IN_HOME_PAGE = "//h3/a[contains(text(), '%s')]";
     public static final String BLOG_POST_TITLE = "//h1[contains(text(), '%s')]";
@@ -41,6 +44,16 @@ public class WebsiteUI {
     public static final String BLOG_CLOSE_SEARCH_BUTTON = "//form[@class='form-inline fade focus collapse show']/following-sibling::i";
     public static final String BLOG_SEARCH_ACTION_BUTTON = "//form[@class='form-inline fade focus collapse show']//i[@class='far fa-search']";
     public static final String BLOG_SEARCH_RESULT_LABEL = "//span[@class='a-text-bold font-weight-bold']";
+
+    public static final String BLOG_BANNER_AT_SEARCHRESULT = "//a[@class='d-block']";
+    public static final String BLOG_SLIDE_BANNER = "//a[@class='d-block rounded-xl overflow-hidden']";
+
+    public static final String BLOG_SUBSCRIBE_NOW_BTN = "//button[text()='Subscribe Now']";
+    public static final String BLOG_SUBSCRIBE_TEXTBOXES = "//input[@placeholder='%s']";
+    public static final String BLOG_ERROR_TOOLTIPS = "//div[@class='tooltip-inner']";
+    public static final String BLOG_TOOLTIP_INVALID_EMAIL = "//div[@class='tooltip-inner' and text()='Please enter a valid email address.']";
+
+
 
 
 

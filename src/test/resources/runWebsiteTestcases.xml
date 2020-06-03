@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Create Shopify Store" parallel="false">
-
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+        <listener class-name="commons.ExtentReportListener" />
+    </listeners>
 
     <test name="RUN ON CHROME UI">
-        <parameter name="browser" value="chrome_headless" />
+        <parameter name="browser" value="chrome" />
         <classes>
             <class name="fireapps.io.functionHomePage" />
 <!--            <class name="fireapps.io.functionsShopifyApps" />-->

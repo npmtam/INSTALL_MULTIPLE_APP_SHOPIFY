@@ -4,7 +4,6 @@ import commons.AbstractPage;
 import commons.AbstractTest;
 import commons.Constants;
 import commons.PageGeneratorManager;
-import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import pageObject.WebsitePO;
@@ -29,7 +28,7 @@ public class functionBlogPage extends AbstractTest {
     }
 
     @Test
-    public void S1_BlogHome(){
+    public void Blog1_BlogHome(){
         log.info("Blog Home 1: Check slide banner display");
         websitePage.isSlideBannerInBlogHomeDisplayed();
 
@@ -48,22 +47,26 @@ public class functionBlogPage extends AbstractTest {
         log.info("Blog Home 6: Access eCommerce Marketing category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_ECOMMERCE);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_ECOMMERCE));
+        abstractPage.takeScreenshot("BlogPage-EcommerceCategory.jpg");
 
         log.info("Blog Home 7: Access Super Tools category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_SUPERTOOLS);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_SUPERTOOLS));
+        abstractPage.takeScreenshot("BlogPage-SupperToolsCategory.jpg");
 
         log.info("Blog Home 6: Access Case Studies category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_CASESTUDIES);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_CASESTUDIES));
+        abstractPage.takeScreenshot("BlogPage-CaseStudiesCategory.jpg");
 
         log.info("Blog Home 6: Access Extra Talk category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_EXTRATALK);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_EXTRATALK));
+        abstractPage.takeScreenshot("BlogPage-ExtraTalkCategory.jpg");
     }
 
     @Test
-    public void S2_SearchFunction(){
+    public void Blog2_SearchFunction(){
         searchKeyword = "Shopify";
         log.info("Search Blog 1: Search for the result");
         websitePage.clickToSearchIcon();
@@ -76,9 +79,58 @@ public class functionBlogPage extends AbstractTest {
         log.info("Search Blog 2: Check the result");
         verifyTrue(websitePage.isTheSearchResultLabelContains(searchKeyword));
         verifyTrue(websitePage.isSearchResultURLContains(searchKeyword));
-        abstractPage.takeScreenshot("SearchResult.jpg");
+        abstractPage.takeScreenshot("BlogPage-SearchResult.jpg");
 
+        log.info("Search Blog 3: Check Banner at search result redirect correct URL");
+        websitePage.clickToBannerAtSearchResult();
+        abstractPage.switchToWindowsByTitle("Ali Reviews AliExpress Reviews – Ecommerce Plugins for Online Stores – Shopify App Store");
+        verifyTrue(websitePage.isBlogBannerCorrectURL(Constants.BANNER_AT_SEARCHRESULT_URL));
+        abstractPage.switchToWindowsByTitle("Search blog - Fireapps");
+    }
 
+    @Test
+    public void Blog3_SlideBanner(){
+        log.info("Slide Banner Blog 1: Back to Blog home");
+        websitePage.clickToHeaderDynamic("Blog");
+        verifyTrue(websitePage.isBlogPageAccessed());
+
+        log.info("Slide Banner Blog 2: Click to slide banner");
+        websitePage.clickToSlideBanner();
+        abstractPage.switchToWindowsByTitle("Ali Reviews AliExpress Reviews – Ecommerce Plugins for Online Stores – Shopify App Store");
+        verifyTrue(websitePage.isBlogBannerCorrectURL(Constants.BLOG_SLIDE_BANNER_URL));
+        abstractPage.switchToWindowsByTitle("Blog - Fireapps");
+    }
+
+    @Test
+    public void Blog4_SubscribeFooter(){
+        log.info("Blog Subscribe 1: Back to Blog home");
+        websitePage.clickToHeaderDynamic("Blog");
+        verifyTrue(websitePage.isBlogPageAccessed());
+
+        log.info("Blog Subscribe 2: Name and Email are empty");
+        websitePage.clickToSubscribeNowBtn();
+        verifyTrue(websitePage.isErrorToolTipAppear(2));
+        abstractPage.takeScreenshot("Blog_Subscribe_Tooltips.jpg");
+
+        log.info("Blog Subscribe 3: Name is empty");
+        driver.get("https://fireapps.io/blog/");
+        websitePage.inputToSubscribeTextboxes("Name", "Tam Nguyen");
+        websitePage.clickToSubscribeNowBtn();
+        verifyTrue(websitePage.isErrorToolTipAppear(1));
+
+        log.info("Blog Subscribe 3: Email is empty");
+        driver.get("https://fireapps.io/blog/");
+        websitePage.inputToSubscribeTextboxes("Your email", "tamqada@gmail.com");
+        websitePage.clickToSubscribeNowBtn();
+        verifyTrue(websitePage.isErrorToolTipAppear(1));
+        abstractPage.sleepInSecond(2);
+
+        log.info("Blog Subscribe 4: Wrong Email format");
+        websitePage.inputToSubscribeTextboxes("Name", "Tam Nguyen");
+        websitePage.inputToSubscribeTextboxes("Your email", "tammail");
+        websitePage.clickToSubscribeNowBtn();
+        verifyTrue(websitePage.isErrorToolTipEmailDisplayed());
+        abstractPage.takeScreenshot("Blog_Subscribe_InvalidEmail.jpg");
     }
 
     @AfterClass

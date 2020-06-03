@@ -1,5 +1,7 @@
 package pageObject;
 
+import com.sun.deploy.config.WebStartConfig;
+import com.sun.deploy.config.WinPlatform;
 import commons.AbstractPage;
 import commons.AbstractTest;
 import commons.Constants;
@@ -193,6 +195,49 @@ public class WebsitePO extends AbstractPage {
     public boolean isSearchResultURLContains(String keyword){
         String resultURL = getCurrentPageURL();
         return resultURL.contains(keyword);
+    }
+
+    public void waitForMapSlideAndTakeTheScrShot(String indexValue, String fileName){
+        waitToElementVisible(WebsiteUI.MAP_SLIDEBAR, indexValue);
+        if(isElementDisplayed(WebsiteUI.MAP_SLIDEBAR, indexValue)){
+            scrollToElement(WebsiteUI.FEEDBACK_LABEL);
+            sleepInSecond(1);
+            takeScreenshot(fileName);
+        }
+    }
+
+    public void clickToBannerAtSearchResult(){
+        waitToElementVisible(WebsiteUI.BLOG_BANNER_AT_SEARCHRESULT);
+        clickToElement(WebsiteUI.BLOG_BANNER_AT_SEARCHRESULT);
+    }
+
+    public boolean isBlogBannerCorrectURL(String URL){
+        String currentURL = getCurrentPageURL();
+        return currentURL.contains(URL);
+    }
+
+    public void clickToSlideBanner(){
+        waitToElementVisible(WebsiteUI.BLOG_SLIDE_BANNER);
+        clickToElement(WebsiteUI.BLOG_SLIDE_BANNER);
+    }
+
+    public void clickToSubscribeNowBtn(){
+        waitToElementClickable(WebsiteUI.BLOG_SUBSCRIBE_NOW_BTN);
+        clickToElement(WebsiteUI.BLOG_SUBSCRIBE_NOW_BTN);
+    }
+
+    public boolean isErrorToolTipAppear(int numOfTooltips){
+        waitToElementVisible(WebsiteUI.BLOG_ERROR_TOOLTIPS);
+        return countElements(WebsiteUI.BLOG_ERROR_TOOLTIPS) == numOfTooltips;
+    }
+
+    public void inputToSubscribeTextboxes(String placeHolder, String textValue){
+        waitToElementVisible(WebsiteUI.BLOG_SUBSCRIBE_TEXTBOXES, placeHolder);
+        sendKeyToElement(WebsiteUI.BLOG_SUBSCRIBE_TEXTBOXES, textValue, placeHolder);
+    }
+
+    public boolean isErrorToolTipEmailDisplayed(){
+        return isElementDisplayed(WebsiteUI.BLOG_TOOLTIP_INVALID_EMAIL);
     }
 
 }
