@@ -54,6 +54,20 @@ public class WebsiteUI {
     public static final String BLOG_TOOLTIP_INVALID_EMAIL = "//div[@class='tooltip-inner' and text()='Please enter a valid email address.']";
 
 
+    //WHAT'S NEW PAGE
+    public static final String WHATSNEW_LOADING_WHEEL = "//i[@class='fas fa-spinner fa-spin js-what-news-loading']";
+    public static final String WHATSNEW_POSTS_TITLE = "//h4[@class='card-title mb-3']/a";
+    public static final String WHATSNEW_ENDOFPAGE_LABEL = "//span[text()='That’s the last of the results.']";
+    public static final String WHATSNEW_TAG_POSTS = "//a[@class='a-btn a-btn-pink btn rounded-pill mr-2' and text()='%s']";
+    public static final String WHATSNEW_APP_CHECKBOXES = "//input[@name='what_new_app' and @value='%s']";
+//    public static final String WHATSNEW_APP_CHECKBOXES = "//label[@class='custom-control-label' and text()='%s']";
+    public static final String WHATSNEW_SEARCH_TEXTBOX = "//aside[@class='o-sidebar col-12 col-md-4']//input[@placeholder='Search']";
+    public static final String WHATSNEW_BACK_BTN = "//span[text()='Back to all changes']";
+    public static final String WHATSNEW_SEARCH_ACTION_BTN = "//button[@class='btn a-btn-icon']";
+    public static final String WHATSNEW_NO_POSTS_DISPLAY = "//div[@class='no-result-news m-article-changeLog text-center']";
+
+
+
 
 
 

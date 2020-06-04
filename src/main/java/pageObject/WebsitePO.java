@@ -1,7 +1,5 @@
 package pageObject;
 
-import com.sun.deploy.config.WebStartConfig;
-import com.sun.deploy.config.WinPlatform;
 import commons.AbstractPage;
 import commons.AbstractTest;
 import commons.Constants;
@@ -172,7 +170,7 @@ public class WebsitePO extends AbstractPage {
         clickToElement(WebsiteUI.BLOG_SEARCH_BUTTON);
     }
 
-    public void inputToSearchTextBox(String searchKeyword){
+    public void inputToBlogSearch(String searchKeyword){
         waitToElementVisible(WebsiteUI.BLOG_SEARCH_TEXTBOX);
         sendKeyToElement(WebsiteUI.BLOG_SEARCH_TEXTBOX, searchKeyword);
     }
@@ -240,4 +238,86 @@ public class WebsitePO extends AbstractPage {
         return isElementDisplayed(WebsiteUI.BLOG_TOOLTIP_INVALID_EMAIL);
     }
 
+    public boolean isThereLoadingWheel(){
+        if(countElements(WebsiteUI.WHATSNEW_POSTS_TITLE) >= 4){
+            scrollToElement(WebsiteUI.FOOTER_MENUS, "About Us");
+        }else{
+            System.out.println("There is lower than 4 post to load more");
+        }
+        return isElementDisplayed(WebsiteUI.WHATSNEW_LOADING_WHEEL);
+    }
+
+    public boolean isEndOfPageLabelDisplayed(){
+        sleepInSecond(1);
+        return isElementDisplayed(WebsiteUI.WHATSNEW_ENDOFPAGE_LABEL);
+    }
+
+    public void selectAppFilter(String app){
+        scrollToElement(WebsiteUI.WHATSNEW_SEARCH_TEXTBOX);
+        clickToElementByJS(WebsiteUI.WHATSNEW_APP_CHECKBOXES, app);
+    }
+
+    public boolean isOnlyAliReviewsPostsFiltered(){
+        boolean isOnlyAliReviews = false;
+        if(!isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIORDERS) &&
+        !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIHUNTER)&&
+        !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_SALESBOX)){
+            isOnlyAliReviews = true;
+        }
+        return isOnlyAliReviews;
+    }
+
+    public boolean isOnlyAliOrdersPostsFiltered(){
+        boolean isOnlyAliOrders = false;
+        if(!isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIREVIEWS) &&
+                !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIHUNTER)&&
+                !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_SALESBOX)){
+            isOnlyAliOrders = true;
+        }
+        return isOnlyAliOrders;
+    }
+
+    public boolean isOnlySalesBoxPostsFiltered(){
+        boolean isOnlySalesBox = false;
+        if(!isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIORDERS) &&
+                !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIHUNTER)&&
+                !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIREVIEWS)){
+            isOnlySalesBox = true;
+        }
+        return isOnlySalesBox;
+    }
+
+    public boolean isOnlyAliHunterPostsFiltered(){
+        boolean isOnlyAliHunter = false;
+        if(!isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIORDERS) &&
+                !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_ALIREVIEWS)&&
+                !isElementPresentInDOM(WebsiteUI.WHATSNEW_TAG_POSTS, Constants.APP_SALESBOX)){
+            isOnlyAliHunter = true;
+        }
+        return isOnlyAliHunter;
+    }
+
+    public void clickToBackToAllChanges(){
+        waitToElementVisible(WebsiteUI.WHATSNEW_BACK_BTN);
+        clickToElement(WebsiteUI.WHATSNEW_BACK_BTN);
+    }
+
+    public void inputToWhatsNewSearch(String keyword){
+        waitToElementVisible(WebsiteUI.WHATSNEW_SEARCH_TEXTBOX);
+        sendKeyToElement(WebsiteUI.WHATSNEW_SEARCH_TEXTBOX, keyword);
+    }
+
+    public void clickToWhatsNewSearchAction(){
+        waitToElementClickable(WebsiteUI.WHATSNEW_SEARCH_ACTION_BTN);
+        clickToElement(WebsiteUI.WHATSNEW_SEARCH_ACTION_BTN);
+    }
+
+    public boolean isWhatsNewSearchResultContains(String keyword){
+        String result = getTextElement(WebsiteUI.WHATSNEW_POSTS_TITLE);
+        return result.contains(keyword);
+    }
+
+    public boolean isWhatsNewNoResult(){
+        return isElementDisplayed(WebsiteUI.WHATSNEW_NO_POSTS_DISPLAY);
+    }
 }

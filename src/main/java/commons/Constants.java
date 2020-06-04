@@ -80,6 +80,23 @@ public class Constants {
     public static final String BLOG_SLIDE_BANNER_URL = "https://apps.shopify.com/ali-reviews?utm_source=blog&utm_medium=";
 
 
+    //WHATS NEW
+    public static final String WHATSNEW_URL = "https://fireapps.io/whats-new";
+    public static final String WHATSNEW_ALIREVIEWS = "ali-reviews";
+    public static final String WHATSNEW_ALIORDERS = "ali-orders";
+    public static final String WHATSNEW_SALESBOX = "sales-box";
+    public static final String WHATSNEW_ALIHUNTER = "ali-hunter";
+    public static final String APP_ALIREVIEWS = "Ali Reviews";
+    public static final String APP_ALIORDERS = "Ali Orders";
+    public static final String APP_SALESBOX = "Sales Box";
+    public static final String APP_ALIHUNTER = "Ali Hunter";
+
+
+
+
+
+
+
 
 
 

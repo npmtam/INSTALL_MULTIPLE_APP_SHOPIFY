@@ -70,7 +70,7 @@ public class functionBlogPage extends AbstractTest {
         searchKeyword = "Shopify";
         log.info("Search Blog 1: Search for the result");
         websitePage.clickToSearchIcon();
-        websitePage.inputToSearchTextBox(searchKeyword);
+        websitePage.inputToBlogSearch(searchKeyword);
         websitePage.clickToCloseSearchTextBox();
         abstractPage.sleepInSecond(1);
         websitePage.clickToSearchIcon();
