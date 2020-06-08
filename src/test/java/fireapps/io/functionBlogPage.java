@@ -24,7 +24,7 @@ public class functionBlogPage extends AbstractTest {
         log.info("Pre-condition: Access Blog Page");
         websitePage.clickToHeaderDynamic("Blog");
         verifyTrue(websitePage.isBlogPageAccessed());
-        abstractPage.takeScreenshot("BlogPage.jpg");
+        abstractPage.takeScreenshot("BlogPage1.jpg");
     }
 
     @Test
@@ -47,22 +47,22 @@ public class functionBlogPage extends AbstractTest {
         log.info("Blog Home 6: Access eCommerce Marketing category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_ECOMMERCE);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_ECOMMERCE));
-        abstractPage.takeScreenshot("BlogPage-EcommerceCategory.jpg");
+        abstractPage.takeScreenshot("BlogPage2-EcommerceCategory.jpg");
 
         log.info("Blog Home 7: Access Super Tools category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_SUPERTOOLS);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_SUPERTOOLS));
-        abstractPage.takeScreenshot("BlogPage-SupperToolsCategory.jpg");
+        abstractPage.takeScreenshot("BlogPage3-SupperToolsCategory.jpg");
 
         log.info("Blog Home 6: Access Case Studies category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_CASESTUDIES);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_CASESTUDIES));
-        abstractPage.takeScreenshot("BlogPage-CaseStudiesCategory.jpg");
+        abstractPage.takeScreenshot("BlogPage4-CaseStudiesCategory.jpg");
 
         log.info("Blog Home 6: Access Extra Talk category and verify");
         websitePage.clickToCategoryOnMenu(Constants.BLOG_EXTRATALK);
         verifyTrue(websitePage.isCategoryTitleEquals(Constants.BLOG_EXTRATALK));
-        abstractPage.takeScreenshot("BlogPage-ExtraTalkCategory.jpg");
+        abstractPage.takeScreenshot("BlogPage5-ExtraTalkCategory.jpg");
     }
 
     @Test
@@ -79,7 +79,7 @@ public class functionBlogPage extends AbstractTest {
         log.info("Search Blog 2: Check the result");
         verifyTrue(websitePage.isTheSearchResultLabelContains(searchKeyword));
         verifyTrue(websitePage.isSearchResultURLContains(searchKeyword));
-        abstractPage.takeScreenshot("BlogPage-SearchResult.jpg");
+        abstractPage.takeScreenshot("BlogPage6-SearchResult.jpg");
 
         log.info("Search Blog 3: Check Banner at search result redirect correct URL");
         websitePage.clickToBannerAtSearchResult();
@@ -110,7 +110,7 @@ public class functionBlogPage extends AbstractTest {
         log.info("Blog Subscribe 2: Name and Email are empty");
         websitePage.clickToSubscribeNowBtn();
         verifyTrue(websitePage.isErrorToolTipAppear(2));
-        abstractPage.takeScreenshot("Blog_Subscribe_Tooltips.jpg");
+        abstractPage.takeScreenshot("BlogPage7-Subscribe-Tooltips.jpg");
 
         log.info("Blog Subscribe 3: Name is empty");
         driver.get("https://fireapps.io/blog/");
@@ -130,7 +130,7 @@ public class functionBlogPage extends AbstractTest {
         websitePage.inputToSubscribeTextboxes("Your email", "tammail");
         websitePage.clickToSubscribeNowBtn();
         verifyTrue(websitePage.isErrorToolTipEmailDisplayed());
-        abstractPage.takeScreenshot("Blog_Subscribe_InvalidEmail.jpg");
+        abstractPage.takeScreenshot("BlogPage8-Subscribe-InvalidEmail.jpg");
     }
 
     @AfterClass

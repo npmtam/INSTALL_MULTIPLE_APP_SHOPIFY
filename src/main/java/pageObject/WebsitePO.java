@@ -1,5 +1,6 @@
 package pageObject;
 
+import com.sun.deploy.config.WinPlatform;
 import commons.AbstractPage;
 import commons.AbstractTest;
 import commons.Constants;
@@ -63,7 +64,7 @@ public class WebsitePO extends AbstractPage {
         clickToElement(WebsiteUI.SLIDE_BAR_BUTTONS, numOder);
     }
 
-    public boolean isLogoDisplayedAfterSelectSlidebar(String fileLogo){
+    public boolean isDescriptionDisplayedAfterSelectSlidebar(String fileLogo){
         scrollToElement(WebsiteUI.APPS_LOGO_IN_SLIDEBAR, fileLogo);
         return isElementDisplayed(WebsiteUI.APPS_LOGO_IN_SLIDEBAR, fileLogo);
     }
@@ -297,6 +298,15 @@ public class WebsitePO extends AbstractPage {
         return isOnlyAliHunter;
     }
 
+    public void clickToTagApps(String appsTag){
+        waitToElementClickable(WebsiteUI.WHATSNEW_TAG_POSTS, appsTag);
+        clickToElementByJS(WebsiteUI.WHATSNEW_TAG_POSTS, appsTag);
+    }
+
+    public void scrollToFooter(){
+        scrollToElement(WebsiteUI.FOOTER_MENUS, "Shopify Apps");
+    }
+
     public void clickToBackToAllChanges(){
         waitToElementVisible(WebsiteUI.WHATSNEW_BACK_BTN);
         clickToElement(WebsiteUI.WHATSNEW_BACK_BTN);
@@ -320,4 +330,31 @@ public class WebsitePO extends AbstractPage {
     public boolean isWhatsNewNoResult(){
         return isElementDisplayed(WebsiteUI.WHATSNEW_NO_POSTS_DISPLAY);
     }
+
+    public void selectShareOptions(String option){
+        waitToElementClickable(WebsiteUI.WHATSNEW_FIRST_POST_SHARE_ICON);
+        clickToElement(WebsiteUI.WHATSNEW_FIRST_POST_SHARE_ICON);
+        waitToElementVisible(WebsiteUI.WHATSNEW_FIRST_POST_SHARE_OPTIONS, option);
+        clickToElement(WebsiteUI.WHATSNEW_FIRST_POST_SHARE_OPTIONS, option);
+    }
+
+    public boolean isSharedPostToFacebook(){
+        switchToWindowsByTitle("Facebook");
+        waitToElementVisible(WebsiteUI.WHATSNEW_FACEBOOK_SHARE_PAGE);
+        return isElementDisplayed(WebsiteUI.WHATSNEW_FACEBOOK_SHARE_PAGE);
+    }
+
+    public boolean isSharedPostToTwitter(){
+        switchToWindowsByTitle("Twitter");
+        waitToElementVisible(WebsiteUI.WHATSNEW_TWITTER_SHARE_PAGE);
+        return isElementDisplayed(WebsiteUI.WHATSNEW_TWITTER_SHARE_PAGE);
+    }
+
+    public boolean isSharedPostToLinkedin(){
+        switchToWindowsByTitle("LinkedIn Login, Sign in | LinkedIn");
+        waitToElementVisible(WebsiteUI.WHATSNEW_LINKEDIN_SHARE_PAGE);
+        return isElementDisplayed(WebsiteUI.WHATSNEW_LINKEDIN_SHARE_PAGE);
+    }
+
+
 }

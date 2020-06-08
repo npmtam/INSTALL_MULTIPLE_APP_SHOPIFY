@@ -50,13 +50,18 @@ public class Constants {
 
 
     //WEBSITE CHECK FUNCTIONS
-    public static final String WEBSITE_URL = "https://fireapps.io";
+    public static final String WEBSITE_URL = "https://beta.fireapps.io";
     public static final String WEBSITE_HOME_BUTTON = "Home";
-    public static final String WEBSITE_ALI_REVIEW_URL = "https://fireapps.io/shopify-apps/ali-reviews/";
-    public static final String WEBSITE_ALI_ORDERS_URL = "https://fireapps.io/shopify-apps/ali-orders/";
-    public static final String WEBSITE_SALES_BOX_URL = "https://fireapps.io/shopify-apps/sales-box/";
-    public static final String WEBSITE_ALI_HUNTER_URL = "https://fireapps.io/shopify-apps/ali-hunter/";
+    public static final String WEBSITE_ALI_REVIEW_URL = "https://beta.fireapps.io/shopify-apps/ali-reviews/";
+    public static final String WEBSITE_ALI_ORDERS_URL = "https://beta.fireapps.io/shopify-apps/ali-orders/";
+    public static final String WEBSITE_SALES_BOX_URL = "https://beta.fireapps.io/shopify-apps/sales-box/";
+    public static final String WEBSITE_ALI_HUNTER_URL = "https://beta.fireapps.io/shopify-apps/ali-hunter/";
     public static final String HELP_CENTER_URL = "https://help.fireapps.io/en/";
+    public static final String DESCRIPTION_APP_ALIREVIEW = "Ali Reviews lets you import reviews directly to your store";
+    public static final String DESCRIPTION_APP_ALIORDERS = "Bulk import products into your Shopify store and process orders";
+    public static final String DESCRIPTION_APP_SALESBOX = "";
+    public static final String DESCRIPTION_APP_ALIHUNTER = "";
+
     public static final String BLOG_POST_TITLE1 = "Shipping & Delivery 101: Best methods to make your life easier";
     public static final String BLOG_POST_TITLE2 = "How essential is the Wishlist for e-commerce stores?";
     public static final String BLOG_POST_TITLE3 = "How to build a high converting product page for Shopify store with 2 powerful tools";
@@ -76,8 +81,8 @@ public class Constants {
     public static final String BLOG_SUPERTOOLS = "Super Tools";
     public static final String BLOG_CASESTUDIES = "Case Studies";
     public static final String BLOG_EXTRATALK = "Extra Talk";
-    public static final String BANNER_AT_SEARCHRESULT_URL = "https://apps.shopify.com/ali-reviews?utm_source=blog&utm_medium=category-banner&utm_campaign=search-404";
-    public static final String BLOG_SLIDE_BANNER_URL = "https://apps.shopify.com/ali-reviews?utm_source=blog&utm_medium=";
+    public static final String BANNER_AT_SEARCHRESULT_URL = "https://apps.shopify.com/ali-reviews";
+    public static final String BLOG_SLIDE_BANNER_URL = "https://apps.shopify.com/ali-reviews";
 
 
     //WHATS NEW
